@@ -35,12 +35,21 @@ const playSound = (key) => {
   }
 };
 
+const btnAnimation = (key) => {
+  document.querySelector(`.${key}`).classList.add("pressed");
+  setTimeout(() => {
+    document.querySelector(`.${key}`).classList.remove("pressed");
+  }, 200);
+};
+
 drums.forEach((drum) => {
   drum.addEventListener("click", () => {
     playSound(drum.innerHTML);
+    btnAnimation(drum.innerHTML);
   });
 });
 
 document.addEventListener("keypress", (event) => {
   playSound(event.key);
+  btnAnimation(event.key);
 });
